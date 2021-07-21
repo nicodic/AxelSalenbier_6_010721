@@ -22,21 +22,16 @@ class ArticleHeader{
     header(nameImg, tag, id) {
           const articleHeader = document.createElement('div')
           articleHeader.className = 'article-header'
-          const imgContainer = document.createElement('div')
-          imgContainer.className = 'img-container'
           const linkImg = document.createElement('a')
-          linkImg.href = './photographe.html'
+          linkImg.className = 'img-container'
+          linkImg.href = `./photographe.html?id=${id}`
           const img = document.createElement('img')
           img.src = `./images/PhotographersID/${nameImg}`
-          img.addEventListener('click', function(){
-               localStorage.setItem('id', id)
-          })
           img.alt = tag
           linkImg.appendChild(img)
-          imgContainer.appendChild(linkImg)
           const titre = document.createElement('h4')
           titre.innerText = tag
-          articleHeader.appendChild(imgContainer)
+          articleHeader.appendChild(linkImg)
           articleHeader.appendChild(titre)
           return articleHeader
      }

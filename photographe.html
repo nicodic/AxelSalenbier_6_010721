@@ -10,7 +10,7 @@
 <body>
      <section class="main">
           <header>
-               <h1>FishEye</h1>
+               <a href="./index.html"><img class="logo"  src="./images/logo.png"/></a>
           </header>
           <section class="photographe-infos">
                <!-- PARTIE DROITE -->
@@ -21,34 +21,60 @@
                          <p class="photographe-line"></p>
                     </div>
                     <div class="photographe-tags-container">
-                         <span class="photographe-tags"></span>
                     </div>
-               </div>*
+               </div>
                <!-- MILIEU -->
-               <div>
-                    <button class="bouton">Contactez-moi</button>
+               <div class="bouton-container">
+                    <button class="bouton" id="btn-openModal">Contactez-moi</button>
                </div>
                <!-- PARTIE DROITE -->
-               <div class="photgraphe-img-container">
-                    <img src="" alt="Photos du photographe">
+               <div class="photographe-img-container">
+                    <img class="photographe-img" alt="Photos du photographe">
                </div>
           </section>
 
-          <div>
+          <div class="tri-container">
                <p class="tri-recherche">Trier par</p>
+               <select>
+                    <option>Popularité</option>
+                    <option>Date</option>
+                    <option>Titre</option>
+               </select>
           </div>
 
-          <main class="article-container">
-               <article class="article">
-                    <div class="article-img-container">
-                         <img src="" alt="Photos réalisé par le photographe">
-                    </div>
-                    <div class="article-img-infos">
-                         <h5 class="article-titre"></h5>
-                         <p class="article-like"></p>
-                    </div>
-               </article>
-          </main>
+         <section class="media-container"></section>
+
+         <aside class="languette-info">
+              <p class="total-like">12052</p>
+              <p class="prix"></p>
+         </aside>
+
+         <section class="form-modal" id="modal"> 
+               <form>
+                    <h5 class="form-titre"></h5>
+                    <label>
+                         Prenom
+                    </label>
+                    <input type="text">
+
+                    <label>
+                         Nom
+                    </label>
+                    <input type="text">
+
+                    <label>
+                         Email
+                    </label>
+                    <input type="mail">
+
+                    <label>
+                         Message
+                    </label>
+                    <input type="text">
+                    
+                    <button id="submit"  type="submit">Envoyer</button>
+               </form>
+         </section>
           
      </section>
 </body>

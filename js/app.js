@@ -1,4 +1,5 @@
 import { ArticleFactory } from "./articleFactory"
+import { getPhotographers } from './repository'
 
 // createur de l'article 
 function fabrique(data){
@@ -15,27 +16,39 @@ function fabrique(data){
 }
 
 // permet d'afficher le json
-function affichage(){
-     fetch('./js/data.json').then(response => {
-          return response.json();
-        }).then(data => {
-          console.log(data);
-          for(let i=0;i<data.photographers.length; i++){
-               let article = fabrique(data.photographers[i])
-               let section = document.querySelector('.article-container')
-               section.appendChild(article)
-          }
-        }).catch(err => {
-          console.log(err)
-        });
+async function affichage(){
+     const photographers = await getPhotographers()
+     for(let i=0;i<photographers.length; i++){
+          let article = fabrique(photographers[i])
+          let section = document.querySelector('.article-container')
+          section.appendChild(article)
+     }
 }
 
 affichage()
 
-// const test = () => {
-//      const header = new ArticleFactory('link')
-//      console.log(header)
-// }
-// test()
+/* Filtre par tag */ 
 
+const tag = document.querySelectorAll('.tag')
+
+tag.forEach(el => el.addEventListener('click',event => {
+     const tagActuel = event.path[0].innerText
+     let section = document.querySelector('.article-container')
+     section.innerHTML = ""
+     // affichagefiltre()
+
+     async function affichagefiltre(){
+          const photographers = await getPhotographers()
+          for (let i = 0; i < photographers.length; i++) {
+               const tags = photographers[i].tags
+               if(tags.includes(tagActuel)){
+                    let section = document.querySelector('.article-container')
+                    let article = fabrique(photographers[i])
+                    section.appendChild(article)
+               }
+          }
+          
+     }
+     affichagefiltre()
+}))
 
