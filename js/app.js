@@ -35,7 +35,6 @@ tag.forEach(el => el.addEventListener('click',event => {
      const tagActuel = event.path[0].innerText
      let section = document.querySelector('.article-container')
      section.innerHTML = ""
-     // affichagefiltre()
 
      async function affichagefiltre(){
           const photographers = await getPhotographers()

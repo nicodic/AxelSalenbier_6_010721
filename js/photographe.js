@@ -5,7 +5,7 @@ import {
   getPhotographers,
 } from './repository'
 
-
+let medias = []
 
 function recupereId() {
   const urlSearchParams = new URLSearchParams(window.location.search)
@@ -28,19 +28,24 @@ function fabriqueMediaVideo(data) {
 
 async function affichage(id) {
   const photographer = await getPhotographer(id)
-  const medias = await getMediaByPhotographer(id)
+  medias = await getMediaByPhotographer(id)
   const test = new Photographe(photographer)
+  triPopularite()
+
+}
+
+function afficheMedias(tableauMedia) {
+  let mediaSection = document.querySelector('.media-container')
+  mediaSection.innerHTML = ""
   for (let i = 0; i < medias.length; i++) {
     if ('image' in medias[i]){
      let article = fabriqueMedia(medias[i])
      fabriqueMedia(medias[i])
-     let mediaSection = document.querySelector('.media-container')
      mediaSection.appendChild(article)
     }
     else if ('video' in medias[i]){
       let articleVideo = fabriqueMediaVideo(medias[i])
       fabriqueMediaVideo(medias[i])
-      let mediaSection = document.querySelector('.media-container')
       mediaSection.appendChild(articleVideo)
     }
     else{
@@ -82,8 +87,55 @@ class Photographe {
   }
 }
 
-/* Modal Contact */ 
+/* filtre medias */ 
+const options = document.querySelectorAll('.option')
+const select = document.getElementById('select')
 
+select.addEventListener('change', function (e) {
+  console.log(e.target.value)
+  switch (e.target.value) {
+    case 'Date':
+      triDate()
+      break;
+
+    case 'Popularité':
+      triPopularite()
+      break;
+
+    case 'Titre':
+      triTitre()
+      break
+
+    default:
+      break;
+  }
+})
+
+function triDate() {
+  const mediasGlobal = medias.sort(function (media1, media2){
+    const date = new Date(media1.date)
+    const date2 = new Date(media2.date)
+    return date>date2 ? -1 : 1
+  })
+ afficheMedias(mediasGlobal)
+}
+
+function triTitre() {
+  const mediasGlobal = medias.sort(function (media1, media2){
+   return media1.title.localeCompare(media2.title)
+  })
+ afficheMedias(mediasGlobal)
+}
+
+function triPopularite() {
+  const mediasGlobal = medias.sort(function (media1, media2){
+   return media1.likes>media2.likes ? -1 : 1
+  })
+ afficheMedias(mediasGlobal)
+}
+
+
+/* Modal Contact */ 
 const submit = document.getElementById('submit')
 const modal = document.getElementById("modal")
 const btnOpenModal = document.getElementById('btn-openModal')
