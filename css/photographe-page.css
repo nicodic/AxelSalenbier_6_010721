@@ -170,3 +170,22 @@ form{
      width: 50%;
      height: 50%;
 }
+
+.lightbox{
+     display: none;
+     position: absolute;
+     top: 50%;
+     left: 50%;
+     transform: translate(-50%,-50%);
+     background-color: lightgray;
+     width: 80vw;
+     height: 80vh;
+}
+
+.close.cursor{
+     cursor: pointer;
+}
+.prev,
+.next{
+     cursor: pointer;
+}

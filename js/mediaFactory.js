@@ -1,3 +1,5 @@
+import { openLightbox } from "./lightbox"
+
 export class MediaFactory{
      constructor(type,data){
           switch(type){
@@ -32,6 +34,7 @@ class MediaPhoto{
           else{
                img.src = `./images/${namesplit}/${data.image}`
           }
+          img.addEventListener('click',()=>{openLightbox(data)})
           const mediaInfo = document.createElement('div')
           mediaInfo.className = "media-infos"
           const titre = document.createElement('h4')
@@ -42,7 +45,6 @@ class MediaPhoto{
           mediaInfo.appendChild(titre)
           mediaInfo.appendChild(like)
           media.appendChild(imgcontainer)
-          
           media.appendChild(mediaInfo)
           return media
      }
@@ -72,7 +74,7 @@ class MediaVideo{
           else{
                video.src = `./images/${namesplit}/${data.video}`
           }
-          
+          video.addEventListener('click',()=>{openLightbox(data)})
           video.setAttribute("controls","true")
           videoContainer.appendChild(video)
           mediaVideo.appendChild(videoContainer)

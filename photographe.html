@@ -5,6 +5,7 @@
      <meta http-equiv="X-UA-Compatible" content="IE=edge">
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
      <link rel="stylesheet" href="./css/photographe-page.css">
+     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"/>
      <title>Document</title>
 </head>
 <body>
@@ -45,7 +46,7 @@
          <section class="media-container"></section>
 
          <aside class="languette-info">
-              <p class="total-like">12052</p>
+              <p class="total-like"></p>
               <p class="prix"></p>
          </aside>
 
@@ -75,6 +76,30 @@
                     <button id="submit"  type="submit">Envoyer</button>
                </form>
          </section>
+
+          <!-- LIGHTBOX -->
+         <div id="lightboxl" class="lightbox">
+          <span class="close cursor" >&times;</span>
+          <div class="modal-content">
+        
+               <!-- Boucle -->
+            <div class="mySlides">
+              <img src="img1_wide.jpg" id="currentSlideImg" style="width:100%">
+              <video src="" id="currentSlideVideo" controls autoplay></video>
+              <div class="numbertext"></div>
+            </div>
+        
+            <!-- Next/previous controls -->
+            <a class="prev">&#10094;</a>
+            <a class="next">&#10095;</a>
+        
+            <!-- Caption text -->
+            <div class="caption-container">
+              <p id="caption"></p>
+            </div>
+
+          </div>
+        </div>
           
      </section>
 </body>

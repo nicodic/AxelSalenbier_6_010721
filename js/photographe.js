@@ -37,6 +37,10 @@ async function affichage(id) {
 function afficheMedias(tableauMedia) {
   let mediaSection = document.querySelector('.media-container')
   mediaSection.innerHTML = ""
+  const totalLike = medias.reduce((sommetotal, media)=>{
+    return sommetotal + media.likes
+  },0)
+  document.getElementsByClassName('total-like')[0].innerHTML = `${totalLike} <i class="fas fa-heart"></i>`
   for (let i = 0; i < medias.length; i++) {
     if ('image' in medias[i]){
      let article = fabriqueMedia(medias[i])
@@ -83,7 +87,8 @@ class Photographe {
     document.getElementsByClassName(
       'photographe-img',
     )[0].src = `./images/PhotographersID/${this.portrait}`;
-    document.getElementsByClassName('prix')[0].innerText = `${price}/jour`
+    document.getElementsByClassName('prix')[0].innerText = `${price}€/jour`
+    
   }
 }
 
@@ -134,7 +139,6 @@ function triPopularite() {
  afficheMedias(mediasGlobal)
 }
 
-
 /* Modal Contact */ 
 const submit = document.getElementById('submit')
 const modal = document.getElementById("modal")
@@ -144,4 +148,3 @@ btnOpenModal.addEventListener('click', function (e){
   e.preventDefault()
   modal.style.display = 'block'
 })
-
