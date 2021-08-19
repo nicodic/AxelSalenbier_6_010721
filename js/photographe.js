@@ -88,6 +88,8 @@ class Photographe {
       'photographe-img',
     )[0].src = `./images/PhotographersID/${this.portrait}`;
     document.getElementsByClassName('prix')[0].innerText = `${price}€/jour`
+    const formTitre = document.querySelector('.form-titre')
+    formTitre.innerHTML = `Contactez-moi<br/>${this.name}`
     
   }
 }
@@ -143,8 +145,18 @@ function triPopularite() {
 const submit = document.getElementById('submit')
 const modal = document.getElementById("modal")
 const btnOpenModal = document.getElementById('btn-openModal')
+const croix = document.querySelector('.form-close')
+const body = document.querySelector('.body')
 
 btnOpenModal.addEventListener('click', function (e){
   e.preventDefault()
   modal.style.display = 'block'
+  body.classList.add('overflowhide')
 })
+
+croix.addEventListener('click', function (e){
+  e.preventDefault()
+  modal.style.display = 'none'
+  body.classList.remove('overflowhide')
+})
+

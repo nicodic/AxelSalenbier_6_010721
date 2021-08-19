@@ -6,9 +6,9 @@
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
      <link rel="stylesheet" href="./css/photographe-page.css">
      <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"/>
-     <title>Document</title>
+     <title></title>
 </head>
-<body>
+<body class="body">
      <section class="main">
           <header>
                <a href="./index.html"><img class="logo"  src="./images/logo.png"/></a>
@@ -52,28 +52,29 @@
 
          <section class="form-modal" id="modal"> 
                <form>
+                    <span class="form-close"><i class="fas fa-times"></i></span>
                     <h5 class="form-titre"></h5>
-                    <label>
+                    <label class="form-label">
                          Prenom
                     </label>
-                    <input type="text">
+                    <input class="form-input" type="text">
 
-                    <label>
+                    <label class="form-label">
                          Nom
                     </label>
-                    <input type="text">
+                    <input class="form-input" type="text">
 
-                    <label>
+                    <label class="form-label">
                          Email
                     </label>
-                    <input type="mail">
+                    <input class="form-input" type="mail">
 
-                    <label>
+                    <label class="form-label">
                          Message
                     </label>
-                    <input type="text">
+                    <input class="form-input form-input-msg" type="text">
                     
-                    <button id="submit"  type="submit">Envoyer</button>
+                    <button id="submit" class="form-submit" type="submit">Envoyer</button>
                </form>
          </section>
 
@@ -81,23 +82,19 @@
          <div id="lightboxl" class="lightbox">
           <span class="close cursor" >&times;</span>
           <div class="modal-content">
+               <div class="mySlides">
+                    <a class="prev">&#10094;</a>
+                    <div class="lightbox-container-img">
+                         <img src="" id="currentSlideImg">
+                    </div>
+                    <div class="lightbox-container-video">
+                         <video src="" id="currentSlideVideo" controls autoplay></video>
+                    </div>
+                    <a class="next">&#10095;</a>
+               </div>
         
-               <!-- Boucle -->
-            <div class="mySlides">
-              <img src="img1_wide.jpg" id="currentSlideImg" style="width:100%">
-              <video src="" id="currentSlideVideo" controls autoplay></video>
-              <div class="numbertext"></div>
-            </div>
-        
-            <!-- Next/previous controls -->
-            <a class="prev">&#10094;</a>
-            <a class="next">&#10095;</a>
-        
-            <!-- Caption text -->
-            <div class="caption-container">
-              <p id="caption"></p>
-            </div>
-
+               <div class="media-titre"></div>
+               <div class="numbertext"></div>
           </div>
         </div>
           

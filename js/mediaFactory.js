@@ -34,13 +34,13 @@ class MediaPhoto{
           else{
                img.src = `./images/${namesplit}/${data.image}`
           }
-          img.addEventListener('click',()=>{openLightbox(data)})
+          img.addEventListener('click',()=>{openLightbox(data);window.scrollTo(0,0)})
           const mediaInfo = document.createElement('div')
           mediaInfo.className = "media-infos"
           const titre = document.createElement('h4')
           titre.innerHTML = data.title
           const like = document.createElement('span')
-          like.innerText = data.likes
+          like.innerHTML = `${data.likes}<i class="fas fa-heart"></i>`
           imgcontainer.appendChild(img)
           mediaInfo.appendChild(titre)
           mediaInfo.appendChild(like)
@@ -74,10 +74,19 @@ class MediaVideo{
           else{
                video.src = `./images/${namesplit}/${data.video}`
           }
-          video.addEventListener('click',()=>{openLightbox(data)})
+          const mediaInfo = document.createElement('div')
+          mediaInfo.className = "media-infos"
+          const titre = document.createElement('h4')
+          titre.innerHTML = data.title
+          const like = document.createElement('span')
+          like.innerHTML = `${data.likes}<i class="fas fa-heart"></i>`
+          video.addEventListener('click',()=>{openLightbox(data);window.scrollTo(0,0)})
           video.setAttribute("controls","true")
           videoContainer.appendChild(video)
           mediaVideo.appendChild(videoContainer)
+          mediaInfo.appendChild(titre)
+          mediaInfo.appendChild(like)
+          mediaVideo.appendChild(mediaInfo)
           return mediaVideo
      }
      getContent(){

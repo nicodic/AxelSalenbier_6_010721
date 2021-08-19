@@ -4,10 +4,12 @@ let index = 0
 export const openLightbox = async (media) => {
   result = await getMediaByPhotographer(media.photographerId)
   let lightbox = document.querySelector('.lightbox')
-  lightbox.style.display = 'block'
+  let body = document.querySelector('.body')
+  lightbox.className = 'active lightbox'
+  lightbox.classList.contains('active') ? body.classList.add('overflowhide') : body.classList.remove('overflowhide')
+  
   showSlides(media)
   showMedias(media)
-     
 }
 
 async function showSlides(media) {
@@ -22,10 +24,16 @@ async function showMedias(media){
   const currentVideo = document.querySelector('#currentSlideVideo')
   const name = document.getElementsByClassName('photographe-name')[0].outerText
   const namesplit = name.split(" ")[0]
+  const containerVideo = document.querySelector('.lightbox-container-video')
+  const containerImage = document.querySelector('.lightbox-container-img')
+  const titreMedia = document.querySelector('.media-titre')
+  titreMedia.innerText = media.title
   
  if(media.video){
   currentImage.style.display = 'none'
   currentVideo.style.display = 'block'
+  containerImage.style.display = 'none'
+  containerVideo.style.display = 'block'
   if(namesplit == "Ellie-Rose"){
     const Ellie = namesplit.replace('-','')
     currentVideo.src = `./images/${Ellie}/${media.video}`
@@ -37,6 +45,8 @@ else{
  else if(media.image){
   currentVideo.style.display = 'none'
   currentImage.style.display = 'block'
+  containerVideo.style.display = 'none'
+  containerImage.style.display = 'block'
   if(namesplit == "Ellie-Rose"){
     const Ellie = namesplit.replace('-','')
     currentImage.src = `./images/${Ellie}/${media.image}`
@@ -53,8 +63,10 @@ else{
 //close lightbox
 let lightbox = document.querySelector('.lightbox')
 let closebtn = document.querySelector('.close')
+let body = document.querySelector('.body')
 closebtn.addEventListener('click', function(){
-  lightbox.style.display = 'none'
+  lightbox.classList.remove('active')
+  body.classList.remove('overflowhide')
 })
 
 //arrow control
