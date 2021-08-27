@@ -31,23 +31,23 @@ affichage()
 
 const tag = document.querySelectorAll('.tag')
 
-tag.forEach(el => el.addEventListener('click',event => {
-     const tagActuel = event.path[0].innerText
+tag.forEach(el =>{
+     el.addEventListener('click',event => {
+     const tagActuel = event.currentTarget.id
+     affichagefiltre(tagActuel)
+     })
+})
+
+async function affichagefiltre(tagActuel){
+     const photographers = await getPhotographers()
      let section = document.querySelector('.article-container')
      section.innerHTML = ""
-
-     async function affichagefiltre(){
-          const photographers = await getPhotographers()
-          for (let i = 0; i < photographers.length; i++) {
-               const tags = photographers[i].tags
-               if(tags.includes(tagActuel)){
-                    let section = document.querySelector('.article-container')
-                    let article = fabrique(photographers[i])
-                    section.appendChild(article)
-               }
+     for (let i = 0; i < photographers.length; i++) {
+          const tags = photographers[i].tags
+          if(tags.includes(tagActuel)){
+               let section = document.querySelector('.article-container')
+               let article = fabrique(photographers[i])
+               section.appendChild(article)
           }
-          
      }
-     affichagefiltre()
-}))
-
+}

@@ -6,6 +6,7 @@ import {
 } from './repository'
 
 let medias = []
+let totalLike = 0
 
 function recupereId() {
   const urlSearchParams = new URLSearchParams(window.location.search)
@@ -15,14 +16,17 @@ function recupereId() {
 }
 recupereId()
 
+function handleLikeChange(){
+  document.getElementsByClassName('total-like')[0].innerHTML = `${totalLike++} <i class="fas fa-heart"></i>`
+}
 
 function fabriqueMedia(data) {
-  const photo = new MediaFactory('photo', data)
+  const photo = new MediaFactory('photo', data, handleLikeChange)
   return photo.getContent()
 }
 
 function fabriqueMediaVideo(data) {
-  const video = new MediaFactory('video', data)
+  const video = new MediaFactory('video', data, handleLikeChange)
   return video.getContent()
 }
 
@@ -37,7 +41,7 @@ async function affichage(id) {
 function afficheMedias(tableauMedia) {
   let mediaSection = document.querySelector('.media-container')
   mediaSection.innerHTML = ""
-  const totalLike = medias.reduce((sommetotal, media)=>{
+  totalLike = medias.reduce((sommetotal, media)=>{
     return sommetotal + media.likes
   },0)
   document.getElementsByClassName('total-like')[0].innerHTML = `${totalLike} <i class="fas fa-heart"></i>`

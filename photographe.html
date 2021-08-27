@@ -11,12 +11,12 @@
 <body class="body">
      <section class="main">
           <header>
-               <a href="./index.html"><img class="logo"  src="./images/logo.png"/></a>
+               <a href="./index.html"><img class="logo"  alt="logo de FishEye" src="./images/logo.png"/></a>
           </header>
           <section class="photographe-infos">
                <!-- PARTIE DROITE -->
                <div class="photographe-infos-container">
-                    <h2 class="photographe-name"></h2>
+                    <h2 class="photographe-name" aria-label="nom du photographe"></h2>
                     <div>
                          <p class="photographe-city"></p>
                          <p class="photographe-line"></p>
@@ -26,7 +26,7 @@
                </div>
                <!-- MILIEU -->
                <div class="bouton-container">
-                    <button class="bouton" id="btn-openModal">Contactez-moi</button>
+                    <button class="bouton" id="btn-openModal" aria-label="Contactez-moi">Contactez-moi</button>
                </div>
                <!-- PARTIE DROITE -->
                <div class="photographe-img-container">
@@ -36,12 +36,13 @@
 
           <div class="tri-container">
                <p class="tri-recherche">Trier par</p>
-               <select id="select">
-                    <option class="option">Popularité</option>
-                    <option class="option">Date</option>
-                    <option class="option">Titre</option>
+               <select id="select" aria-label="trier les medias">
+                    <option class="option" aria-label="Popularité">Popularité</option>
+                    <option class="option" aria-label="Date">Date</option>
+                    <option class="option" aria-label="Titre">Titre</option>
                </select>
           </div>
+
 
          <section class="media-container"></section>
 
@@ -52,45 +53,45 @@
 
          <section class="form-modal" id="modal"> 
                <form>
-                    <span class="form-close"><i class="fas fa-times"></i></span>
+                    <a href="#" class="form-close"><i class="fas fa-times"></i></a>
                     <h5 class="form-titre"></h5>
-                    <label class="form-label">
+                    <label class="form-label" for="input-prenom" aria-label="prenom">
                          Prenom
                     </label>
-                    <input class="form-input" type="text">
+                    <input class="form-input" type="text" id="input-prenom">
 
-                    <label class="form-label">
+                    <label class="form-label" for="input-nom" aria-label="nom">
                          Nom
                     </label>
-                    <input class="form-input" type="text">
+                    <input class="form-input" type="text" id="input-nom">
 
-                    <label class="form-label">
+                    <label class="form-label" for="input-mail" aria-label="email">
                          Email
                     </label>
-                    <input class="form-input" type="mail">
+                    <input class="form-input" id="input-mail" type="mail">
 
-                    <label class="form-label">
+                    <label class="form-label" for="input-msg" aria-label="message" >
                          Message
                     </label>
-                    <input class="form-input form-input-msg" type="text">
+                    <input class="form-input form-input-msg" id="input-msg" type="text">
                     
-                    <button id="submit" class="form-submit" type="submit">Envoyer</button>
+                    <button id="submit" class="form-submit" type="submit" aria-label="envoyer">Envoyer</button>
                </form>
          </section>
 
           <!-- LIGHTBOX -->
          <div id="lightboxl" class="lightbox">
-          <span class="close cursor" >&times;</span>
+          <a href="#" class="close cursor" >&times;</a>
           <div class="modal-content">
                <div class="mySlides">
-                    <a class="prev">&#10094;</a>
+                    <a href="#" class="prev">&#10094;</a>
                     <div class="lightbox-container-img">
                          <img src="" id="currentSlideImg">
                     </div>
                     <div class="lightbox-container-video">
                          <video src="" id="currentSlideVideo" controls autoplay></video>
                     </div>
-                    <a class="next">&#10095;</a>
+                    <a href="#" class="next">&#10095;</a>
                </div>
         
                <div class="media-titre"></div>

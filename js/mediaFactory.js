@@ -1,12 +1,12 @@
 import { openLightbox } from "./lightbox"
 
 export class MediaFactory{
-     constructor(type,data){
+     constructor(type,data,handleLikeChange){
           switch(type){
                case  'photo' :
-                    return new MediaPhoto(data)
+                    return new MediaPhoto(data, handleLikeChange)
                case 'video' : 
-                    return new MediaVideo(data)
+                    return new MediaVideo(data, handleLikeChange)
                     default :
                     throw new Error('Entrez un parametre valide')
           }
@@ -15,14 +15,16 @@ export class MediaFactory{
 
 class MediaPhoto{
      content = null
-     constructor(data){
-          this.content = this.photo(data)
+     constructor(data, handleLikeChange){
+          console.log(handleLikeChange)
+          this.content = this.photo(data, handleLikeChange)
      }
-     photo(data){
+     photo(data, handleLikeChange){
           const media = document.createElement('article')
            media.className = 'media'
-           const imgcontainer = document.createElement('div')
+           const imgcontainer = document.createElement('a')
            imgcontainer.className = 'img-container'
+           imgcontainer.href = "#"
            const img = document.createElement('img')
            const name = document.getElementsByClassName('photographe-name')[0].outerText
            //ELie-Rose -> enlever le tirer
@@ -34,13 +36,24 @@ class MediaPhoto{
           else{
                img.src = `./images/${namesplit}/${data.image}`
           }
-          img.addEventListener('click',()=>{openLightbox(data);window.scrollTo(0,0)})
-          const mediaInfo = document.createElement('div')
+          imgcontainer.addEventListener('click',()=>{openLightbox(data);window.scrollTo(0,0)})
+          const mediaInfo = document.createElement('a')
+          mediaInfo.href = "#"
           mediaInfo.className = "media-infos"
           const titre = document.createElement('h4')
           titre.innerHTML = data.title
           const like = document.createElement('span')
-          like.innerHTML = `${data.likes}<i class="fas fa-heart"></i>`
+          const datalike = document.createElement('span')
+          datalike.innerText = data.likes
+          const coeur = document.createElement('i')
+          coeur.className = "fas fa-heart"
+          coeur.addEventListener('click', ()=>{
+               data.likes++
+               datalike.innerText = data.likes
+               handleLikeChange()
+          })
+          like.appendChild(datalike)
+          like.appendChild(coeur)
           imgcontainer.appendChild(img)
           mediaInfo.appendChild(titre)
           mediaInfo.appendChild(like)
