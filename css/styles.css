@@ -9,7 +9,7 @@
      border: 1px solid var(--font-gray);
      color:  var(--main-color);
      padding: 5px 10px;
-     margin: 5px 5px;
+     margin: 5px;
      cursor: pointer;
      transition: 0.2s ease-in-out;
 }
@@ -27,8 +27,13 @@ body{
      font-family: Arial, Helvetica, sans-serif;
 }
 
+.logo-container{
+     display: block;
+}
+
 .logo{
-     max-width : 500px
+     max-width : 500px;
+     width: 100%;
 }
 
 .main{
@@ -102,10 +107,19 @@ main{
      font-size: 2rem;
 }
 
+.article-link{
+     display: flex;
+     flex-wrap: wrap;
+     justify-content: center;
+}
+
 @media screen and (max-width:850px) {
      ul{
           padding: 0;
           justify-content: center;
+     }
+     .logo-container{
+          text-align: center;
      }
      .article-container{
           margin-top: 50px;

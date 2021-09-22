@@ -9,7 +9,7 @@
      border: 1px solid var(--font-gray);
      color:  var(--main-color) ;
      padding: 5px 10px;
-     margin: 0 5px;
+     margin: 5px;
      transition: 0.2s ease-in-out;
 }
 
@@ -27,8 +27,17 @@ body{
      overflow: hidden;
 }
 
+.opacitydown{
+     opacity: 0.5;
+}
+
+.logo-container{
+   display: block;
+}
+
 .logo{
-     max-width : 500px
+     max-width : 500px;
+     width: 100%;
 }
 
 h4{
@@ -42,7 +51,7 @@ h4{
      display: flex;
      justify-content: space-around;
      background-color: whitesmoke;
-     padding: 40px 0;
+     padding: 40px 20px;
 }
 .photographe-name,
 .photographe-city{
@@ -316,6 +325,29 @@ form{
      .body{
           position: relative;
      }
+     .logo-container{
+          text-align: center;
+     }
+     .photographe-city,
+     .photographe-name,
+     .photographe-line{
+          text-align: center;
+     }
+     .photographe-infos {
+          justify-content: center;
+          align-items: center;
+          flex-direction: column-reverse;
+          padding: 20px;
+      }
+     .photographe-img-container{
+          width: 30%;
+     }
+     .photographe-tags-container{
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: center;
+          margin-left: -5px;
+     }
      .bouton-container{
           position: fixed;
           bottom: 40px;
@@ -325,11 +357,23 @@ form{
      .bouton-container button{
           padding: 10px 15px;
      }
+     .lightbox{
+          top: 20%;
+     }
+     .form-modal{
+          top: 20%;
+     }
 }
 
 @media screen and (max-width: 550px){
      .media{
           width: calc(100%);
           margin: 0 15px;
+     }
+     .lightbox{
+          top: 10%;
+     }
+     .form-modal{
+          top: 12%;
      }
 }

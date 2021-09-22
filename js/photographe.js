@@ -114,11 +114,14 @@ const modal = document.getElementById('modal');
 const btnOpenModal = document.getElementById('btn-openModal');
 const croix = document.querySelector('.form-close');
 const body = document.querySelector('.body');
+const main = document.querySelector('.main');
 
 btnOpenModal.addEventListener('click', (e) => {
   e.preventDefault();
+  window.scrollTo(0, 0);
   modal.style.display = 'block';
   body.classList.add('overflowhide');
+  main.classList.add('opacitydown');
 });
 
 // close modal
@@ -126,4 +129,5 @@ croix.addEventListener('click', (e) => {
   e.preventDefault();
   modal.style.display = 'none';
   body.classList.remove('overflowhide');
+  main.classList.remove('opacitydown');
 });

@@ -11,7 +11,7 @@
 <body class="body">
      <section class="main">
           <header>
-               <a href="./index.html"><img class="logo"  alt="logo de FishEye" src="./images/logo.png"/></a>
+               <a class="logo-container" href="./index.html"><img class="logo"  alt="logo de FishEye" src="./images/logo.png"/></a>
           </header>
           <section class="photographe-infos">
                 <!-- LEFT -->
@@ -50,56 +50,54 @@
               <p class="total-like"></p>
               <p class="prix"></p>
          </aside>
-
-         <section class="form-modal" id="modal"> 
-               <form>
-                    <a href="#" class="form-close"><i class="fas fa-times"></i></a>
-                    <h5 class="form-titre"></h5>
-                    <label class="form-label" for="input-prenom" aria-label="prenom">
-                         Prenom
-                    </label>
-                    <input class="form-input" type="text" id="input-prenom">
-
-                    <label class="form-label" for="input-nom" aria-label="nom">
-                         Nom
-                    </label>
-                    <input class="form-input" type="text" id="input-nom">
-
-                    <label class="form-label" for="input-mail" aria-label="email">
-                         Email
-                    </label>
-                    <input class="form-input" id="input-mail" type="mail">
-
-                    <label class="form-label" for="input-msg" aria-label="message" >
-                         Message
-                    </label>
-                    <input class="form-input form-input-msg" id="input-msg" type="text">
-                    
-                    <button id="submit" class="form-submit" type="submit" aria-label="envoyer">Envoyer</button>
-               </form>
-         </section>
-
-          <!-- LIGHTBOX -->
-         <div id="lightboxl" class="lightbox">
-          <a href="#" class="close cursor" aria-label="Fermeture">&times;</a>
-          <div class="modal-content">
-               <div class="mySlides">
-                    <a href="#" class="prev" aria-label="Media précedent">&#10094;</a>
-                    <div class="lightbox-container-img">
-                         <img src="" id="currentSlideImg">
-                    </div>
-                    <div class="lightbox-container-video">
-                         <video src="" id="currentSlideVideo" controls autoplay></video>
-                    </div>
-                    <a href="#" class="next" aria-label="Media suivant">&#10095;</a>
-               </div>
-        
-               <div class="media-titre"></div>
-               <div class="numbertext"></div>
-          </div>
-        </div>
-          
      </section>
+     <section class="form-modal" id="modal"> 
+          <form>
+               <a href="#" class="form-close"><i class="fas fa-times"></i></a>
+               <h5 class="form-titre"></h5>
+               <label class="form-label" for="input-prenom" aria-label="prenom">
+                    Prenom
+               </label>
+               <input class="form-input" type="text" id="input-prenom">
+
+               <label class="form-label" for="input-nom" aria-label="nom">
+                    Nom
+               </label>
+               <input class="form-input" type="text" id="input-nom">
+
+               <label class="form-label" for="input-mail" aria-label="email">
+                    Email
+               </label>
+               <input class="form-input" id="input-mail" type="mail">
+
+               <label class="form-label" for="input-msg" aria-label="message" >
+                    Message
+               </label>
+               <input class="form-input form-input-msg" id="input-msg" type="text">
+               
+               <button id="submit" class="form-submit" type="submit" aria-label="envoyer">Envoyer</button>
+          </form>
+    </section>
+
+     <!-- LIGHTBOX -->
+    <div id="lightboxl" class="lightbox">
+     <a href="#" class="close cursor" aria-label="Fermeture">&times;</a>
+     <div class="modal-content">
+          <div class="mySlides">
+               <a href="#" class="prev" aria-label="Media précedent">&#10094;</a>
+               <div class="lightbox-container-img">
+                    <img src="" id="currentSlideImg">
+               </div>
+               <div class="lightbox-container-video">
+                    <video src="" id="currentSlideVideo" controls autoplay></video>
+               </div>
+               <a href="#" class="next" aria-label="Media suivant">&#10095;</a>
+          </div>
+   
+          <div class="media-titre"></div>
+          <div class="numbertext"></div>
+     </div>
+   </div>
 </body>
 <script src="./dist/photographe.bundle.js"></script>
 </html>

@@ -54,11 +54,14 @@ const openLightbox = async (media) => {
   result = await getMediaByPhotographer(media.photographerId);
   const lightbox = document.querySelector('.lightbox');
   const body = document.querySelector('.body');
+  const main = document.querySelector('.main');
   lightbox.className = 'active lightbox';
   if (lightbox.classList.contains('active')) {
     body.classList.add('overflowhide');
+    main.classList.add('opacitydown');
   } else {
     body.classList.remove('overflowhide');
+    main.classList.remove('opacitydown');
   }
   showSlides(media);
   showMedias(media);
@@ -82,9 +85,11 @@ const openLightbox = async (media) => {
 const lightbox = document.querySelector('.lightbox');
 const closebtn = document.querySelector('.close');
 const body = document.querySelector('.body');
+const main = document.querySelector('.main');
 closebtn.addEventListener('click', () => {
   lightbox.classList.remove('active');
   body.classList.remove('overflowhide');
+  main.classList.remove('opacitydown');
 });
 
 /**
