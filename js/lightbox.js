@@ -4,12 +4,14 @@ import { getMediaByPhotographer } from './repository';
 let result = [];
 let index = 0;
 
+// display position of media into medias Array
 async function showSlides(media) {
   index = result.findIndex((currentMedia) => currentMedia.id === media.id);
   const nombreslide = document.querySelector('.numbertext');
   nombreslide.innerText = `${index + 1}/${result.length}`;
 }
 
+// display media
 async function showMedias(media) {
   index = result.findIndex((currentMedia) => currentMedia.id === media.id);
   const currentImage = document.querySelector('#currentSlideImg');
@@ -22,6 +24,7 @@ async function showMedias(media) {
   titreMedia.innerText = media.title;
 
   if (media.video) {
+    currentVideo.alt = media.title;
     currentImage.style.display = 'none';
     currentVideo.style.display = 'block';
     containerImage.style.display = 'none';
@@ -33,6 +36,7 @@ async function showMedias(media) {
       currentVideo.src = `./images/${namesplit}/${media.video}`;
     }
   } else if (media.image) {
+    currentImage.alt = media.title;
     currentVideo.style.display = 'none';
     currentImage.style.display = 'block';
     containerVideo.style.display = 'none';
@@ -83,13 +87,17 @@ closebtn.addEventListener('click', () => {
   body.classList.remove('overflowhide');
 });
 
+/**
+ * show media which is at position index2
+ * @param {number} index2
+ */
 function showMediaByIndex(index2) {
   const media = result[index2];
   showMedias(media);
   showSlides(media);
 }
 
-// arrow control
+// arrow previous media control
 const prev = document.querySelector('.prev');
 prev.addEventListener('click', () => {
   index -= 1;
@@ -99,6 +107,7 @@ prev.addEventListener('click', () => {
   showMediaByIndex(index);
 });
 
+// arrow next media control
 const next = document.querySelector('.next');
 next.addEventListener('click', () => {
   index += 1;

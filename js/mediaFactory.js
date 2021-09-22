@@ -1,6 +1,7 @@
 import MediaVideo from './videoFactory';
 import MediaPhoto from './photoFactory';
 
+// Create media according to his type
 export default class MediaFactory {
   constructor(type, data, handleLikeChange) {
     switch (type) {

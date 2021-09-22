@@ -6,6 +6,7 @@ export default class MediaVideo {
     this.content = this.video(data);
   }
 
+  // create video media
   video(data) {
     this.params = data;
     const mediaVideo = document.createElement('article');

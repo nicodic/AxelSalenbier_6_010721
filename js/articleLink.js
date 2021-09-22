@@ -4,6 +4,7 @@ export default class ArticleLink {
     this.content = this.link(data.tags);
   }
 
+  // create links of home article
   link(tags) {
     this.articleLink = document.createElement('div');
     this.articleLink.className = 'article-link';

@@ -10,6 +10,7 @@ import Photographe from './model/photographe';
 let medias = [];
 let totalLike = 0;
 
+// update totalLikes on click
 function handleLikeChange() {
   totalLike += 1;
   document.getElementsByClassName('total-like')[0].innerHTML = `${totalLike} <i class="fas fa-heart"></i>`;
@@ -49,6 +50,7 @@ function afficheMedias() {
   }
 }
 
+// sort by like
 function triPopularite() {
   const mediasGlobal = medias.sort((media1, media2) => media1.likes > media2.likes);
   afficheMedias(mediasGlobal);
@@ -69,7 +71,7 @@ function recupereId() {
 }
 recupereId();
 
-/* filtre medias */
+/* filter medias */
 const select = document.getElementById('select');
 
 function triDate() {
@@ -81,6 +83,7 @@ function triDate() {
   afficheMedias(mediasGlobal);
 }
 
+// sort by alphabetical
 function triTitre() {
   const mediasGlobal = medias.sort((media1, media2) => media1.title.localeCompare(media2.title));
   afficheMedias(mediasGlobal);
@@ -118,6 +121,7 @@ btnOpenModal.addEventListener('click', (e) => {
   body.classList.add('overflowhide');
 });
 
+// close modal
 croix.addEventListener('click', (e) => {
   e.preventDefault();
   modal.style.display = 'none';

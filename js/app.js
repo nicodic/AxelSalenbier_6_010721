@@ -1,7 +1,7 @@
 import ArticleFactory from './articleFactory';
 import { getPhotographers } from './repository';
 
-// createur de l'article
+// create article
 function fabrique(data) {
   const article = document.createElement('article');
   article.className = 'article';
@@ -15,7 +15,7 @@ function fabrique(data) {
   return article;
 }
 
-// permet d'afficher le json
+// display json
 async function affichage() {
   const photographers = await getPhotographers();
   for (let i = 0; i < photographers.length; i += 1) {
@@ -27,7 +27,7 @@ async function affichage() {
 
 affichage();
 
-/* Filtre par tag */
+/* Filter by tag */
 
 const tag = document.querySelectorAll('.tag');
 

@@ -2,6 +2,7 @@ import ArticleHeader from './articleHeader';
 import ArticleText from './articleText';
 import ArticleLink from './articleLink';
 
+// Create article factory with differents sub-article parts
 export default class ArticleFactory {
   constructor(type, data) {
     switch (type) {

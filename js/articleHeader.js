@@ -3,7 +3,7 @@ export default class ArticleHeader {
     this.content = this.header(data.portrait, data.name, data.id);
   }
 
-  // creation du header d'un article photographe ( image cliquable )
+  // create header ( image clickable ) of home article
   header(nameImg, tag, id) {
     this.articleHeader = document.createElement('div');
     this.articleHeader.className = 'article-header';

@@ -6,6 +6,7 @@ export default class MediaPhoto {
     this.content = this.photo(data, handleLikeChange);
   }
 
+  // create photo article
   photo(data, handleLikeChange) {
     this.params = data;
     this.media = document.createElement('article');

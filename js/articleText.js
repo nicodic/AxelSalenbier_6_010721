@@ -4,6 +4,7 @@ export default class ArticleText {
     this.content = this.texte(data.city, data.country, data.tagline, data.price);
   }
 
+  // create text of home article
   texte(city, country, tagline, price) {
     this.articleText = document.createElement('div');
     this.articleText.className = 'article-texte';
