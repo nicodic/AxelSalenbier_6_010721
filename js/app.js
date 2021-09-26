@@ -1,53 +1,43 @@
 import ArticleFactory from './articleFactory';
 import { getPhotographers } from './repository';
 
-
+let photographers = []
+const section = document.querySelector('.article-container')
 
 // create article
-function fabrique(data) {
-  const article = document.createElement('article');
+const createArticle = (data) => {
+  const articleElm = document.createElement('article');
   
   const header = new ArticleFactory('header', data).getContent();
   const texte = new ArticleFactory('text', data).getContent();
   const link = new ArticleFactory('link', data).getContent();
   
-  article.className = 'article';
-  article.id = data.id;
-  article.append(header, texte, link);
+  articleElm.className = 'article';
+  articleElm.id = data.id;
+  articleElm.append(header, texte, link);
   
-  return article;
+  return articleElm;
 }
 
 // display json
-async function affichage() {
-  const photographers = await getPhotographers();
-  
-  photographers.forEach(photographer => {
-    document.querySelector('.article-container').append(fabrique(photographer));
-  })
-}
-
-affichage();
-
-/* Filter by tag */
-
-const tag = document.querySelectorAll('.tag');
-
-async function affichagefiltre(tagActuel) {
-  const photographers = await getPhotographers();
-  const section = document.querySelector('.article-container');
-  
-  section.innerHTML = '';
-  
-  photographers.forEach(photographer => {
-    if (!photographer.tags.includes(tagActuel)) return
+const displayArticles = (selectedTag) => {
+  photographers.forEach((photographer) => {
+    if (selectedTag && !photographer.tags.includes(selectedTag)) return;
     
-    section.append(fabrique(photographer));
+    section.append(createArticle(photographer));
   })
 }
 
-tag.forEach((el) => {
-  el.addEventListener('click', (event) => {
-    affichagefiltre(event.currentTarget.id);
+const init = async () => {
+  photographers = await getPhotographers();
+  
+  displayArticles();
+  
+  document.querySelectorAll('.tag').forEach((el) => {
+    el.addEventListener('click', () => {
+      displayArticles(el.id);
+    });
   });
-});
+}
+
+init();
