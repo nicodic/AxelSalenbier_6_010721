@@ -1,28 +1,30 @@
 import ArticleFactory from './articleFactory';
 import { getPhotographers } from './repository';
 
+
+
 // create article
 function fabrique(data) {
   const article = document.createElement('article');
+  
+  const header = new ArticleFactory('header', data).getContent();
+  const texte = new ArticleFactory('text', data).getContent();
+  const link = new ArticleFactory('link', data).getContent();
+  
   article.className = 'article';
   article.id = data.id;
-  const header = new ArticleFactory('header', data);
-  const texte = new ArticleFactory('text', data);
-  const link = new ArticleFactory('link', data);
-  article.appendChild(header.getContent());
-  article.appendChild(texte.getContent());
-  article.appendChild(link.getContent());
+  article.append(header, texte, link);
+  
   return article;
 }
 
 // display json
 async function affichage() {
   const photographers = await getPhotographers();
-  for (let i = 0; i < photographers.length; i += 1) {
-    const article = fabrique(photographers[i]);
-    const section = document.querySelector('.article-container');
-    section.appendChild(article);
-  }
+  
+  photographers.forEach(photographer => {
+    document.querySelector('.article-container').append(fabrique(photographer));
+  })
 }
 
 affichage();
@@ -34,19 +36,18 @@ const tag = document.querySelectorAll('.tag');
 async function affichagefiltre(tagActuel) {
   const photographers = await getPhotographers();
   const section = document.querySelector('.article-container');
+  
   section.innerHTML = '';
-  for (let i = 0; i < photographers.length; i += 1) {
-    const { tags } = photographers[i];
-    if (tags.includes(tagActuel)) {
-      const article = fabrique(photographers[i]);
-      section.appendChild(article);
-    }
-  }
+  
+  photographers.forEach(photographer => {
+    if (!photographer.tags.includes(tagActuel)) return
+    
+    section.append(fabrique(photographer));
+  })
 }
 
 tag.forEach((el) => {
   el.addEventListener('click', (event) => {
-    const tagActuel = event.currentTarget.id;
-    affichagefiltre(tagActuel);
+    affichagefiltre(event.currentTarget.id);
   });
 });
