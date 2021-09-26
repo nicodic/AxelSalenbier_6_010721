@@ -1,10 +1,10 @@
 export default class ArticleHeader {
   constructor(data) {
-    this.content = this.header(data.portrait, data.name, data.id);
+    this.content = this.header(data);
   }
 
   // create header ( image clickable ) of home article
-  header(nameImg, tag, id) {
+  header({nameImg, tag, id}) {
     this.articleHeader = document.createElement('div');
     this.articleHeader.className = 'article-header';
     const linkImg = document.createElement('a');
