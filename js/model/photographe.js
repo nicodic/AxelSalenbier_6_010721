@@ -19,7 +19,8 @@ export default class Photographe {
     document.querySelector('.photographe-line').innerText = this.tagline;
     
     this.tags.forEach((tag) => {
-      //https://developer.mozilla.org/fr/docs/Web/API/Element/insertAdjacentHTML
+      // Il exite une methode pour insérer du HTML sous forme de string : insertAdjacentHTML
+      // https://developer.mozilla.org/fr/docs/Web/API/Element/insertAdjacentHTML
       document.querySelector('.photographe-tags-container').insertAdjacentHTML('beforeend', `<span class="tags">#${tag}</span>`)
     });
     
