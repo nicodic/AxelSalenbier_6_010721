@@ -22,11 +22,21 @@ const createArticle = (data) => {
 // display json
 const displayArticles = (selectedTag) => {
   photographers.forEach((photographer) => {
-    if (selectedTag && !photographer.tags.includes(selectedTag)) return;
+    if (!photographer.tags.includes(selectedTag)) return;
     
     section.append(createArticle(photographer));
   })
 }
+
+/* 
+C'est possible de faire comme ça (juste une question de préférence)
+
+const displayArticles = (selectedTag) => {
+  photographers.filter((photographer) => photographer.tags.includes(selectedTag)).forEach((photographer) => {
+    section.append(createArticle(photographer));
+  })
+}
+*/
 
 const init = async () => {
   photographers = await getPhotographers();
