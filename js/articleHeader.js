@@ -5,19 +5,15 @@ export default class ArticleHeader {
 
   // create header ( image clickable ) of home article
   header({nameImg, tag, id}) {
-    this.articleHeader = document.createElement('div');
-    this.articleHeader.className = 'article-header';
-    const linkImg = document.createElement('a');
-    linkImg.className = 'img-container';
-    linkImg.href = `./photographe.html?id=${id}`;
-    const img = document.createElement('img');
-    img.src = `./images/PhotographersID/${nameImg}`;
-    img.alt = tag;
-    linkImg.appendChild(img);
-    const titre = document.createElement('h4');
-    titre.innerText = tag;
-    this.articleHeader.appendChild(linkImg);
-    this.articleHeader.appendChild(titre);
+    const html = `<div>
+        <a class="img-container" href="./photographe.html?id=${id}">
+          <img src="./images/PhotographersID/${nameImg}" alt="${tag}">
+        </a>
+        <h4>${tag}</h4>
+      </div>`
+    
+    this.articleHeader = document.createRange().createContextualFragment(html).firstChild;
+    
     return this.articleHeader;
   }
 
