@@ -15,5 +15,17 @@ export default class ArticleFactory {
       default:
         throw new Error('Entrez un parametre valide');
     }
-  }
+    /*
+    Rien de grave juste je préfère le else if plutôt que switch à cause de sa synthaxe trop spécifique (souvent tu vas devoir checker google pour savoir comment l'écrire ^^)
+    
+    if(type === 'header') {
+        return new ArticleHeader(data);
+    } else if(type === 'text') {
+        return new ArticleText(data);
+    } else if(type === 'link') {
+        return new ArticleLink(data);
+    } else {
+        throw new Error('Entrez un parametre valide');
+    }
+    */
 }
